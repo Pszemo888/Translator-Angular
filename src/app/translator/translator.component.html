@@ -1,0 +1,16 @@
+<h2>Translator - Twoje narzędzie do tłumaczenia</h2>
+<p>Tutaj możesz tłumaczyć teksty na różne języki.</p>
+<button>button</button>
+
+<form (submit)="translateText($event)">
+    <label for="sourceText">Wprowadź tekst do przetłumaczenia:</label>
+    <textarea
+      id="sourceText"
+      rows="4"
+      cols="50"
+      placeholder="Wpisz tekst tutaj"
+      #sourceTextInput
+    ></textarea>
+  
+    <button type="submit">Tłumacz</button>
+  </form>
