@@ -1,5 +1,64 @@
 <h2>Zarządzanie tłumaczeniami</h2>
-<button (click)="addTranslation()">Dodaj nowe tłumaczenie</button> 
+
+<div class="translation-form">
+  <h3>{{ editingTranslation ? 'Edytuj tłumaczenie' : 'Dodaj nowe tłumaczenie' }}</h3>
+  <form (submit)="editingTranslation ? updateTranslation() : addTranslation(); $event.preventDefault()">
+    <div>
+      <label for="sourceLanguage">Język źródłowy:</label>
+      <input
+        type="text"
+        id="sourceLanguage"
+        name="sourceLanguage"
+        [(ngModel)]="sourceLanguage"
+        placeholder="np. pl"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="targetLanguage">Język docelowy:</label>
+      <input
+        type="text"
+        id="targetLanguage"
+        name="targetLanguage"
+        [(ngModel)]="targetLanguage"
+        placeholder="np. en"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="sourceText">Tekst źródłowy:</label>
+      <input
+        type="text"
+        id="sourceText"
+        name="sourceText"
+        [(ngModel)]="sourceText"
+        placeholder="Wpisz tekst źródłowy"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="translatedText">Tekst przetłumaczony:</label>
+      <input
+        type="text"
+        id="translatedText"
+        name="translatedText"
+        [(ngModel)]="translatedText"
+        placeholder="Wpisz tekst przetłumaczony"
+        required
+      />
+    </div>
+
+    <button type="submit">{{ editingTranslation ? 'Zapisz zmiany' : 'Dodaj tłumaczenie' }}</button>
+    <button type="button" (click)="resetForm()" *ngIf="editingTranslation">Anuluj</button>
+  </form>
+</div>
+
+<hr />
+
+<h3>Lista tłumaczeń</h3>
 <table>
   <thead>
     <tr>
@@ -10,4 +69,16 @@
       <th>Akcje</th>
     </tr>
   </thead>
+  <tbody>
+    <tr *ngFor="let translation of translations">
+      <td>{{ translation.sourceLanguage }}</td>
+      <td>{{ translation.targetLanguage }}</td>
+      <td>{{ translation.sourceText }}</td>
+      <td>{{ translation.translatedText }}</td>
+      <td>
+        <button (click)="editTranslation(translation)">Edit</button>
+          <button (click)="deleteTranslation(translation._id)">Delte</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
