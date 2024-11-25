@@ -5,7 +5,7 @@ import { ManageTranslationsComponent } from './admin/manage-translations/manage-
 
 
 export const routes: Routes = [
-    { path: '', component: TranslatorComponent },
+    { path: 'translator', component: TranslatorComponent },
     { path: 'history', component: HistoryComponent },
     { path: 'admin/manage', component: ManageTranslationsComponent },
     { path: '**', redirectTo: '' },

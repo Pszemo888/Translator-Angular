@@ -9,7 +9,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   template: `
     <h1>{{ title }}</h1>
     <nav>
-      <a routerLink="/" routerLinkActive="active">translator</a> | 
+      <a routerLink="/translator" routerLinkActive="active">translator</a> | 
       <a routerLink="/history" routerLinkActive="active">historia</a>
       <a routerLink="/admin/manage" routerLinkActive="active">admin</a>
     </nav>

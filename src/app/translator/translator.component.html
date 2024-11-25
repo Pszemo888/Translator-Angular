@@ -1,16 +1,13 @@
-<h2>Translator - Twoje narzędzie do tłumaczenia</h2>
-<p>Tutaj możesz tłumaczyć teksty na różne języki.</p>
-<button>button</button>
+<div>
+  <h1>Translator</h1>
+  <button (click)="fetchTranslation()">Fetch Translation</button>
 
-<form (submit)="translateText($event)">
-    <label for="sourceText">Wprowadź tekst do przetłumaczenia:</label>
-    <textarea
-      id="sourceText"
-      rows="4"
-      cols="50"
-      placeholder="Wpisz tekst tutaj"
-      #sourceTextInput
-    ></textarea>
-  
-    <button type="submit">Tłumacz</button>
-  </form>
+  <div *ngIf="sourceText">
+    <p><strong>Source Text:</strong> {{ sourceText }}</p>
+    <p><strong>Translated Text:</strong> {{ translatedText }}</p>
+    <p><strong>Source Language:</strong> {{ sourceLanguage }}</p>
+    <p><strong>Target Language:</strong> {{ targetLanguage }}</p>
+  </div>
+
+  <p *ngIf="!sourceText">No translation data fetched yet.</p>
+</div>
