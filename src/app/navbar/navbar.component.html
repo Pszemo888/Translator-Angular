@@ -1,0 +1,11 @@
+<nav>
+    <div class="nav-left">
+
+      <a *ngIf="isAdmin" routerLink="/admin">Panel administratora</a>
+    </div>
+    <div class="nav-right">
+      <span *ngIf="username">Zalogowany jako: {{ username }}</span>
+      <button (click)="logout()">Wyloguj się</button>
+    </div>
+  </nav>
+  

@@ -1,7 +1,7 @@
-<h2>Zarządzanie tłumaczeniami</h2>
+<h2>Panel administratora</h2>
 
 <div class="translation-form">
-  <h3>{{ editingTranslation ? 'Edytuj tłumaczenie' : 'Dodaj nowe tłumaczenie' }}</h3>
+  <h3>{{ editingTranslation ? 'Edytuj tłumaczenie' : 'Dodaj nowe tłumaczenie'}}</h3>
   <form (submit)="editingTranslation ? updateTranslation() : addTranslation(); $event.preventDefault()">
     <div>
       <label for="sourceLanguage">Język źródłowy:</label>
@@ -10,7 +10,7 @@
         id="sourceLanguage"
         name="sourceLanguage"
         [(ngModel)]="sourceLanguage"
-        placeholder="np. pl"
+        placeholder="pl"
         required
       />
     </div>
@@ -22,7 +22,7 @@
         id="targetLanguage"
         name="targetLanguage"
         [(ngModel)]="targetLanguage"
-        placeholder="np. en"
+        placeholder="en"
         required
       />
     </div>
@@ -34,7 +34,6 @@
         id="sourceText"
         name="sourceText"
         [(ngModel)]="sourceText"
-        placeholder="Wpisz tekst źródłowy"
         required
       />
     </div>
@@ -46,7 +45,6 @@
         id="translatedText"
         name="translatedText"
         [(ngModel)]="translatedText"
-        placeholder="Wpisz tekst przetłumaczony"
         required
       />
     </div>
@@ -56,7 +54,7 @@
   </form>
 </div>
 
-<hr />
+<button type="butttton" >Dodaj język</button>
 
 <h3>Lista tłumaczeń</h3>
 <table>

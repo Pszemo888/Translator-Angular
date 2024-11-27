@@ -1,13 +1,52 @@
-<div>
+<div class="translator-container">
   <h1>Translator</h1>
-  <button (click)="fetchTranslation()">Fetch Translation</button>
 
-  <div *ngIf="sourceText">
-    <p><strong>Source Text:</strong> {{ sourceText }}</p>
-    <p><strong>Translated Text:</strong> {{ translatedText }}</p>
-    <p><strong>Source Language:</strong> {{ sourceLanguage }}</p>
-    <p><strong>Target Language:</strong> {{ targetLanguage }}</p>
+  <form (submit)="fetchTranslation(); $event.preventDefault()">
+    <div class="form-group">
+      <label for="sourceText">Tekst do przetłumaczenia:</label>
+      <input
+        type="text"
+        id="sourceText"
+        [(ngModel)]="sourceText"
+        name="sourceText"
+        placeholder="Wpisz tekst do przetłumaczenia"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="sourceLanguage">Język źródłowy:</label>
+      <input
+        type="text"
+        id="sourceLanguage"
+        [(ngModel)]="sourceLanguage"
+        name="sourceLanguage"
+        placeholder="np. en"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="targetLanguage">Język docelowy:</label>
+      <input
+        type="text"
+        id="targetLanguage"
+        [(ngModel)]="targetLanguage"
+        name="targetLanguage"
+        placeholder="np. pl"
+        required
+      />
+    </div>
+
+    <button type="submit">Przetłumacz</button>
+  </form>
+
+  <div *ngIf="translatedText" class="translation-result">
+    <h3>Wynik tłumaczenia</h3>
+    
+   {{ translatedText }}
+   
   </div>
 
-  <p *ngIf="!sourceText">No translation data fetched yet.</p>
+  
 </div>

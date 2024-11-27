@@ -11,13 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./translator.component.css']
 })
 export class TranslatorComponent {
-  sourceText: string = 'mysz';
+  sourceText: string = '';
   translatedText: string = '';
-  sourceLanguage: string = 'pl'; 
-  targetLanguage: string = 'en'; 
+  sourceLanguage: string = '';
+  targetLanguage: string = '';
 
   private readonly apiUrl = 'http://localhost:3000';
-  private readonly authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDQ3MmFhZTZlMGMzYmNiNDcwOWU2NSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczMjUzOTA3MywiZXhwIjoxNzMyNjI1NDczfQ.67RQ7IuspE3vGdUOxq7r1oCabu6xLrzsZzGR8r7uuC4';
+  private readonly authToken = ''; // Zmień na dynamiczne pobieranie tokena, jeśli to konieczne
 
   constructor() {}
 
@@ -31,7 +31,7 @@ export class TranslatorComponent {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.authToken}`,
+        Authorization: `Bearer ${this.authToken}`, // Dodaj autoryzację, jeśli wymagana
       },
       body: JSON.stringify({
         sourceText: this.sourceText,

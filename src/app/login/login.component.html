@@ -1,0 +1,31 @@
+<div class="login-form">
+    <h2>Logowanie</h2>
+    <form (submit)="login(); $event.preventDefault()">
+      <div>
+        <label for="email">E-mail:</label>
+        <input
+          type="text"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="fajnymail3000@hotmail.com"
+          required
+        />
+      </div>
+  
+      <div>
+        <label for="password">Hasło:</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="p4s$$w0rD"
+          required
+        />
+      </div>
+  
+      <button type="submit">Zaloguj się</button>
+    </form>
+  </div>
+  

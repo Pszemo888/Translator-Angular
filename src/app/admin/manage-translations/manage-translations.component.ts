@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit   } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service'; 
+
 
 @Component({
   selector: 'app-manage-translations',
@@ -9,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./manage-translations.component.css'],
   imports: [FormsModule, CommonModule],
 })
-export class ManageTranslationsComponent {
+export class ManageTranslationsComponent implements OnInit{
   private readonly apiUrl = 'http://localhost:3000/api/translations';
 
   sourceText: string = '';
@@ -20,8 +22,14 @@ export class ManageTranslationsComponent {
   translations: any[] = [];
   editingTranslation: any = null;
 
-  constructor() {this.getTranslations();}
-  
+  constructor(private authService: AuthService) {this.getTranslations();}
+  ngOnInit(): void {
+    if (!this.authService.isAdmin()) {
+      console.log('Brak dostępu: użytkownik nie jest administratorem.');
+      // caly czas wyswietla dla uzytkownika guard route najlepiej zrobic
+    }
+  }
+
   getTranslations(): void {
     fetch(this.apiUrl)
       .then((response) => {
